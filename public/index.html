@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Minimal Calculator</title>
     <style>
-      /* extremely minimal styling */
+      /* enhanced styling */
       body {
         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
         display: flex;
@@ -13,25 +13,62 @@
         justify-content: center;
         height: 100vh;
         margin: 0;
+        background-color: #f7f7f7;
       }
+
+      /* Wider, responsive calculator container */
       .calc {
-        width: 320px;
+        /* use a larger max but remain responsive on small screens */
+        width: min(540px, 90vw);
         padding: 16px;
         border-radius: 8px;
         box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
+
       .row {
         display: flex;
         gap: 8px;
         margin-bottom: 8px;
+        align-items: center;
       }
+
+      /* allow flex children to shrink correctly */
+      .row > * {
+        min-width: 0;
+      }
+
       input,
       select,
       button {
         font-size: 16px;
         padding: 8px;
         flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
       }
+
+      /* operator select: fixed but slightly wider so symbols and spacing look good */
+      select#op {
+        flex: 0 0 56px; /* fixed width so inputs get most of the space */
+        text-align: center;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      input::placeholder {
+        /* ensure placeholder text isn't clipped visually */
+        opacity: 0.8;
+      }
+
+      input:focus,
+      select:focus,
+      button:focus {
+        outline: 2px solid #4a8;
+      }
+
       #result {
         min-height: 32px;
         display: flex;
@@ -41,6 +78,24 @@
         margin-top: 8px;
         padding-top: 8px;
         color: #111;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* small-screen tweak: stack buttons if extremely narrow */
+      @media (max-width: 360px) {
+        .row {
+          gap: 6px;
+        }
+        .calc {
+          padding: 12px;
+        }
+        .row + .row {
+          flex-direction: column;
+        }
+        button {
+          width: 100%;
+        }
       }
     </style>
   </head>
