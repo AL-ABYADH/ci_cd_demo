@@ -22,7 +22,7 @@ function divide(a, b) {
 // calculate convenience function: op is one of '+', '-', '*', '/'
 function calculate(a, b, op) {
   switch (op) {
-    case "+":
+    case "add":
       return add(a, b);
     case "-":
       return subtract(a, b);
