@@ -1,15 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script defer src="bundle.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Minimal Calculator</title>
+    <style>
+      /* extremely minimal styling */
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .calc {
+        width: 320px;
+        padding: 16px;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      input,
+      select,
+      button {
+        font-size: 16px;
+        padding: 8px;
+        flex: 1;
+      }
+      #result {
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #eee;
+        margin-top: 8px;
+        padding-top: 8px;
+        color: #111;
+      }
+    </style>
   </head>
   <body>
-    <h1>What day is it? 😕</h1>
-    <h2>Today is <span id="day">?</span></h2>
+    <div class="calc" role="application" aria-label="Minimal calculator">
+      <div class="row">
+        <input
+          id="a"
+          type="text"
+          placeholder="first number"
+          aria-label="first number" />
+        <select id="op" aria-label="operator">
+          <option value="+">+</option>
+          <option value="-">−</option>
+          <option value="*">×</option>
+          <option value="/">÷</option>
+        </select>
+        <input
+          id="b"
+          type="text"
+          placeholder="second number"
+          aria-label="second number" />
+      </div>
 
-    <img src="pug.jpg" width="500" alt="pug" />
+      <div class="row">
+        <button id="calc">Calculate</button>
+        <button id="clear" type="button">Clear</button>
+      </div>
+
+      <div id="result" aria-live="polite">—</div>
+    </div>
+
+    <script src="./main.js"></script>
   </body>
 </html>
