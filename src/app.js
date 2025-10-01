@@ -8,7 +8,7 @@ function add(a, b) {
   return toNumber(a) + toNumber(b);
 }
 function subtract(a, b) {
-  return toNumber(a) + toNumber(b);
+  return toNumber(a) - toNumber(b);
 }
 function multiply(a, b) {
   return toNumber(a) * toNumber(b);
